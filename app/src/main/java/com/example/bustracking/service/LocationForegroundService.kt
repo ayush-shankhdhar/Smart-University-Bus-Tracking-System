@@ -1,4 +1,5 @@
 package com.example.bustracking.service
+// Added comment for commit 1
 
 import android.annotation.SuppressLint
 import android.app.Notification
@@ -15,6 +16,7 @@ import com.example.bustracking.data.local.entity.BusEntity
 import com.example.bustracking.modals.RVBusDriverModal
 import com.example.bustracking.utils.NotificationUtils
 import com.google.android.gms.location.*
+import android.os.Build
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.coroutines.CoroutineScope
@@ -131,7 +133,13 @@ class LocationForegroundService : Service() {
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        stopForeground(STOP_FOREGROUND_REMOVE)
+        // Use appropriate stopForeground call based on API level
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            stopForeground(STOP_FOREGROUND_REMOVE)
+        } else {
+            @Suppress("DEPRECATION")
+            stopForeground(true)
+        }
         stopSelf()
     }
 
