@@ -427,7 +427,7 @@ git push origin feature/your-feature-name
 
 ## 👨‍💻 Developer
 
-**Ayush **
+**Ayush**
 
 CampusRide – Smart University Bus Tracking System
 
